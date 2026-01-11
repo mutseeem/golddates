@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>GoldDates | Premium Biskra Dates for Algiers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,6 +25,9 @@
             --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             --shadow-gold: 0 5px 20px rgba(212, 175, 55, 0.3);
             --border-radius: 12px;
+            --header-height: 80px;
+            --safe-area-inset-top: env(safe-area-inset-top, 0px);
+            --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
         }
 
         /* Reset and Base Styles */
@@ -30,11 +35,21 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        *:focus {
+            outline: none;
         }
 
         html, body {
             width: 100%;
             overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         html {
@@ -42,11 +57,13 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #E5E5E5;
             background-color: var(--black);
             font-size: 16px;
+            padding-top: var(--safe-area-inset-top);
+            padding-bottom: var(--safe-area-inset-bottom);
         }
 
         h1, h2, h3, h4 {
@@ -109,6 +126,8 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .btn::before {
@@ -127,7 +146,7 @@
             width: 100%;
         }
 
-        .btn:hover {
+        .btn:hover, .btn:active {
             color: var(--black);
             transform: translateY(-3px);
             box-shadow: var(--shadow-gold);
@@ -139,7 +158,7 @@
             border: 2px solid var(--gold);
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover, .btn-primary:active {
             background-color: transparent;
             color: var(--gold);
         }
@@ -163,6 +182,8 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .btn-whatsapp::before {
@@ -177,11 +198,11 @@
             z-index: -1;
         }
 
-        .btn-whatsapp:hover::before {
+        .btn-whatsapp:hover::before, .btn-whatsapp:active::before {
             width: 100%;
         }
 
-        .btn-whatsapp:hover {
+        .btn-whatsapp:hover, .btn-whatsapp:active {
             color: var(--white);
             transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
@@ -201,11 +222,14 @@
             align-items: center;
             z-index: 9999;
             transition: opacity 0.8s ease, visibility 0.8s ease;
+            padding-top: var(--safe-area-inset-top);
+            padding-bottom: var(--safe-area-inset-bottom);
         }
 
         .loading-screen.hidden {
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
         }
 
         .brand-logo {
@@ -234,7 +258,7 @@
             transition: width 0.3s ease;
         }
 
-        /* Header */
+        /* Header - FIXED FOR MOBILE */
         header {
             position: fixed;
             top: 0;
@@ -244,12 +268,18 @@
             padding: 1.5rem 0;
             background-color: rgba(10, 10, 10, 0.98);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
             transition: var(--transition);
+            padding-top: max(1.5rem, var(--safe-area-inset-top));
+            height: calc(var(--header-height) + var(--safe-area-inset-top));
+            display: flex;
+            align-items: center;
         }
 
         header.scrolled {
             padding: 1.2rem 0;
+            padding-top: max(1.2rem, var(--safe-area-inset-top));
             box-shadow: var(--shadow);
         }
 
@@ -257,6 +287,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
@@ -267,10 +298,11 @@
             align-items: center;
             text-decoration: none;
             transition: var(--transition);
+            z-index: 1001;
         }
 
         .logo-image {
-            height: 70px; /* Increased size for better visibility */
+            height: 70px;
             width: auto;
             border-radius: 8px;
             transition: var(--transition);
@@ -284,10 +316,13 @@
             box-shadow: var(--shadow-gold);
         }
 
+        /* Navigation - FIXED FOR MOBILE */
         .nav-links {
             display: flex;
             list-style: none;
             gap: 3rem;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
@@ -297,16 +332,18 @@
             font-size: 1.1rem;
             transition: var(--transition);
             position: relative;
+            display: block;
+            padding: 0.5rem 0;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a:active {
             color: var(--gold);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
@@ -314,10 +351,11 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after, .nav-links a:active::after {
             width: 100%;
         }
 
+        /* Mobile Menu Button - IMPROVED */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -325,16 +363,29 @@
             font-size: 1.8rem;
             color: var(--gold);
             cursor: pointer;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            -webkit-tap-highlight-color: transparent;
+            padding: 0;
+            margin: 0;
         }
 
-        /* Hero Section - Fixed for full width */
+        .mobile-menu-btn:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 0;
+            padding-top: calc(var(--header-height) + var(--safe-area-inset-top));
             padding-bottom: 0;
             margin-top: 0;
         }
@@ -452,7 +503,7 @@
             border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
-        .gallery-item:hover {
+        .gallery-item:hover, .gallery-item:active {
             transform: translateY(-10px);
             box-shadow: var(--shadow-gold);
             border-color: rgba(212, 175, 55, 0.3);
@@ -463,9 +514,11 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
+            -webkit-user-drag: none;
+            user-select: none;
         }
 
-        .gallery-item:hover img {
+        .gallery-item:hover img, .gallery-item:active img {
             transform: scale(1.1);
         }
 
@@ -482,7 +535,7 @@
             transition: var(--transition);
         }
 
-        .gallery-item:hover .gallery-overlay {
+        .gallery-item:hover .gallery-overlay, .gallery-item:active .gallery-overlay {
             transform: translateY(0);
             opacity: 1;
         }
@@ -537,7 +590,7 @@
             transition: transform 0.8s ease;
         }
 
-        .about-image:hover img {
+        .about-image:hover img, .about-image:active img {
             transform: scale(1.05);
         }
 
@@ -646,7 +699,7 @@
             transition: var(--transition);
         }
 
-        .highlight-card:hover {
+        .highlight-card:hover, .highlight-card:active {
             transform: translateY(-5px);
             border-color: rgba(212, 175, 55, 0.3);
             box-shadow: var(--shadow-gold);
@@ -730,7 +783,7 @@
             transform: translateY(0);
         }
 
-        .product-card:hover {
+        .product-card:hover, .product-card:active {
             transform: translateY(-15px);
             box-shadow: var(--shadow);
             border-color: rgba(212, 175, 55, 0.3);
@@ -748,7 +801,7 @@
             transition: transform 0.6s ease;
         }
 
-        .product-card:hover .product-image img {
+        .product-card:hover .product-image img, .product-card:active .product-image img {
             transform: scale(1.1);
         }
 
@@ -881,6 +934,8 @@
             font-size: 1.1rem;
             color: var(--white);
             transition: var(--transition);
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .form-control:focus {
@@ -912,15 +967,16 @@
             z-index: 100;
             transition: var(--transition);
             text-decoration: none;
+            padding-bottom: var(--safe-area-inset-bottom);
         }
 
-        .whatsapp-float:hover {
+        .whatsapp-float:hover, .whatsapp-float:active {
             background-color: var(--whatsapp-dark);
             transform: scale(1.1);
             box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
         }
 
-        /* QR Code Section */
+        /* QR Code Section - UPDATED FOR IMAGE */
         .qr-section {
             background-color: var(--black);
             padding: 8rem 0;
@@ -952,36 +1008,105 @@
             border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
+        /* Updated QR Code Image Styling */
         .qr-code {
-            width: 250px;
-            height: 250px;
+            width: 280px; /* Increased size for better visibility */
+            height: 280px;
             margin: 0 auto 2.5rem;
-            background-color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border-radius: 12px;
             overflow: hidden;
             position: relative;
             border: 4px solid var(--gold);
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            transition: var(--transition);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
-        .qr-code::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .qr-code:hover, .qr-code:active {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--gold-light);
+        }
+
+        .qr-code img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
-            background-size: 200% 200%;
-            animation: shine 3s infinite;
+            object-fit: contain;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* QR Code fallback if image doesn't load */
+        .qr-code::after {
+            content: 'QR Code';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--black);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: none; /* Only show if image fails to load */
+        }
+
+        .qr-code.fallback::after {
+            display: block;
+        }
+
+        .qr-code.fallback img {
+            display: none;
+        }
+
+        .qr-info {
+            margin-top: 2rem;
+        }
+
+        .qr-info h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .qr-info p {
+            font-size: 1.1rem;
+            color: #B0B0B0;
+            margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
         .qr-instruction {
             font-style: italic;
             color: #B0B0B0;
             margin-top: 2rem;
+            font-size: 1.2rem;
+            padding: 1rem;
+            background-color: rgba(212, 175, 55, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .qr-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .qr-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #CCCCCC;
+            font-size: 1rem;
+        }
+
+        .qr-feature i {
+            color: var(--gold);
             font-size: 1.2rem;
         }
 
@@ -990,6 +1115,7 @@
             background-color: var(--black-light);
             padding: 5rem 0 2rem;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
+            padding-bottom: calc(2rem + var(--safe-area-inset-bottom));
         }
 
         footer .container {
@@ -1035,7 +1161,7 @@
             transition: var(--transition);
         }
 
-        .footer-links a:hover {
+        .footer-links a:hover, .footer-links a:active {
             color: var(--gold);
             padding-left: 0.5rem;
         }
@@ -1062,6 +1188,86 @@
             font-size: 1rem;
         }
 
+        /* Mobile Menu Overlay - NEW IMPROVED VERSION */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+        }
+
+        .mobile-menu-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-top: calc(var(--header-height) + var(--safe-area-inset-top));
+            padding-bottom: var(--safe-area-inset-bottom);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-nav-links li {
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .mobile-nav-links li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 1.5rem 0;
+            color: #E5E5E5;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .mobile-nav-links a:hover, .mobile-nav-links a:active {
+            color: var(--gold);
+            padding-left: 1rem;
+        }
+
+        .mobile-nav-links a::after {
+            content: '›';
+            position: absolute;
+            right: 0;
+            color: var(--gold);
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-links a:hover::after, .mobile-nav-links a:active::after {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
         /* Animations */
         @keyframes shine {
             0% { background-position: -200% 0; }
@@ -1079,7 +1285,18 @@
             }
         }
 
-        /* Responsive Design */
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design - IMPROVED FOR MOBILE */
         @media (max-width: 1200px) {
             h1 {
                 font-size: 4rem;
@@ -1160,11 +1377,12 @@
             }
             
             section {
-                padding: 6rem 0;
+                padding: 4rem 0;
             }
             
             .hero {
                 min-height: 90vh;
+                padding-top: calc(var(--header-height) + var(--safe-area-inset-top));
             }
             
             .hero h1 {
@@ -1179,40 +1397,29 @@
                 font-size: 1.2rem;
             }
             
+            /* Mobile Menu - FIXED */
             .mobile-menu-btn {
-                display: block;
+                display: flex;
             }
             
             .nav-links {
-                position: fixed;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                background-color: var(--black-light);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                box-shadow: var(--shadow);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: var(--transition);
-                z-index: 999;
-                border-top: 1px solid rgba(212, 175, 55, 0.1);
+                display: none;
             }
             
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
+            .mobile-menu-overlay {
+                display: block;
             }
             
             .hero-btns, .contact-buttons {
                 flex-direction: column;
+                align-items: center;
             }
             
             .btn, .btn-whatsapp {
                 width: 100%;
                 text-align: center;
                 max-width: 300px;
+                padding: 1rem 1.5rem;
             }
             
             .brand-logo {
@@ -1230,11 +1437,16 @@
             }
             
             .about, .products, .contact, .qr-section, .nutrition, .gallery {
-                padding: 6rem 0;
+                padding: 4rem 0;
             }
             
             .nutrition-table {
                 padding: 1.5rem;
+                overflow-x: auto;
+            }
+            
+            table {
+                min-width: 500px;
             }
             
             th, td {
@@ -1249,12 +1461,28 @@
                 height: 50px;
             }
             
+            /* QR Code Responsive */
+            .qr-container {
+                padding: 2rem;
+            }
+            
+            .qr-code {
+                width: 220px;
+                height: 220px;
+            }
+            
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
                 width: 55px;
                 height: 55px;
                 font-size: 1.8rem;
+                padding-bottom: var(--safe-area-inset-bottom);
+            }
+            
+            /* Fix for iOS Safari 100vh issue */
+            .hero {
+                min-height: -webkit-fill-available;
             }
         }
 
@@ -1288,16 +1516,17 @@
             }
             
             .contact-form, .nutrition-table {
-                padding: 2rem;
+                padding: 1.5rem;
             }
             
             .qr-container {
-                padding: 2.5rem 1.5rem;
+                padding: 1.5rem;
             }
             
             .qr-code {
                 width: 200px;
                 height: 200px;
+                border-width: 3px;
             }
             
             .gallery-item {
@@ -1315,6 +1544,58 @@
                 height: 50px;
                 font-size: 1.6rem;
             }
+            
+            .qr-features {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            /* Fix for mobile form inputs */
+            input, select, textarea {
+                font-size: 16px !important; /* Prevents iOS zoom on focus */
+            }
+            
+            .form-control {
+                font-size: 16px;
+                padding: 1rem;
+            }
+        }
+
+        /* Fix for specific mobile browsers */
+        @supports (-webkit-touch-callout: none) {
+            /* iOS Safari specific styles */
+            .hero {
+                min-height: -webkit-fill-available;
+            }
+            
+            .loading-screen {
+                min-height: -webkit-fill-available;
+            }
+        }
+
+        /* Fix for Android Chrome */
+        @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 768px) {
+            select,
+            textarea,
+            input {
+                font-size: 16px;
+            }
+        }
+
+        /* Prevent pull-to-refresh on mobile */
+        body {
+            overscroll-behavior-y: none;
+        }
+
+        /* Better touch targets for mobile */
+        button, 
+        .btn, 
+        .btn-whatsapp,
+        .nav-links a,
+        .mobile-nav-links a {
+            min-height: 44px;
+            min-width: 44px;
         }
     </style>
 </head>
@@ -1334,7 +1615,7 @@
                 <img src="src/logo.jpg" alt="GoldDates Logo" class="logo-image">
             </a>
             
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
                 <i class="fas fa-bars"></i>
             </button>
             
@@ -1350,7 +1631,22 @@
         </div>
     </header>
 
-    <!-- Hero Section - Full width fixed -->
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-container">
+            <ul class="mobile-nav-links">
+                <li><a href="#home" class="mobile-menu-link">Home</a></li>
+                <li><a href="#gallery" class="mobile-menu-link">Gallery</a></li>
+                <li><a href="#about" class="mobile-menu-link">About</a></li>
+                <li><a href="#nutrition" class="mobile-menu-link">Nutrition</a></li>
+                <li><a href="#products" class="mobile-menu-link">Varieties</a></li>
+                <li><a href="#contact" class="mobile-menu-link">Contact</a></li>
+                <li><a href="#qr" class="mobile-menu-link">QR Code</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-background"></div>
         <div class="hero-content">
@@ -1376,7 +1672,7 @@
             <div class="gallery-grid">
                 <!-- Image 1 -->
                 <div class="gallery-item">
-                    <img src="src/1.jpg" alt="Premium Biskra Dates 1">
+                    <img src="src/1.jpg" alt="Premium Biskra Dates 1" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Fresh Harvest</h3>
                         <p>Freshly harvested Biskra dates</p>
@@ -1385,7 +1681,7 @@
                 
                 <!-- Image 2 -->
                 <div class="gallery-item">
-                    <img src="src/2.jpg" alt="Premium Biskra Dates 2">
+                    <img src="src/2.jpg" alt="Premium Biskra Dates 2" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Golden Quality</h3>
                         <p>The golden standard in dates</p>
@@ -1394,7 +1690,7 @@
                 
                 <!-- Image 3 -->
                 <div class="gallery-item">
-                    <img src="src/3.jpg" alt="Premium Biskra Dates 3">
+                    <img src="src/3.jpg" alt="Premium Biskra Dates 3" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Date Palms</h3>
                         <p>Biskra date palms in oasis</p>
@@ -1403,7 +1699,7 @@
                 
                 <!-- Image 4 -->
                 <div class="gallery-item">
-                    <img src="src/4.jpg" alt="Premium Biskra Dates 4">
+                    <img src="src/4.jpg" alt="Premium Biskra Dates 4" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Premium Selection</h3>
                         <p>Hand-selected premium dates</p>
@@ -1412,7 +1708,7 @@
                 
                 <!-- Image 5 -->
                 <div class="gallery-item">
-                    <img src="src/5.jpg" alt="Premium Biskra Dates 5">
+                    <img src="src/5.jpg" alt="Premium Biskra Dates 5" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Natural Goodness</h3>
                         <p>Pure, natural date goodness</p>
@@ -1421,7 +1717,7 @@
                 
                 <!-- Image 6 -->
                 <div class="gallery-item">
-                    <img src="src/6.jpg" alt="Premium Biskra Dates 6">
+                    <img src="src/6.jpg" alt="Premium Biskra Dates 6" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Quality Packaging</h3>
                         <p>Premium packaging for quality</p>
@@ -1432,7 +1728,7 @@
                 
                 <!-- Image 8 -->
                 <div class="gallery-item">
-                    <img src="src/8.jpg" alt="Premium Biskra Dates 8">
+                    <img src="src/8.jpg" alt="Premium Biskra Dates 8" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Traditional Methods</h3>
                         <p>Traditional date cultivation</p>
@@ -1441,7 +1737,7 @@
                 
                 <!-- Image 9 -->
                 <div class="gallery-item">
-                    <img src="src/9.jpg" alt="Premium Biskra Dates 9">
+                    <img src="src/9.jpg" alt="Premium Biskra Dates 9" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Market Ready</h3>
                         <p>Premium dates ready for market</p>
@@ -1463,7 +1759,7 @@
                     <a href="#contact" class="btn">Connect with Us</a>
                 </div>
                 <div class="about-image">
-                    <img src="src/3.jpg" alt="Biskra Date Palms">
+                    <img src="src/3.jpg" alt="Biskra Date Palms" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1491,42 +1787,44 @@
                 
                 <div class="nutrition-table">
                     <h3>Nutritional Values</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nutrients</th>
-                                <th>Dried Dates (25g)</th>
-                                <th>Fresh Dates (25g)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Calories</td>
-                                <td>70 kcal</td>
-                                <td>66 kcal</td>
-                            </tr>
-                            <tr>
-                                <td>Proteins</td>
-                                <td>0.5g</td>
-                                <td>0.4g</td>
-                            </tr>
-                            <tr>
-                                <td>Carbohydrates</td>
-                                <td>16.2g</td>
-                                <td>18.0g</td>
-                            </tr>
-                            <tr>
-                                <td>Lipids</td>
-                                <td>0.05g</td>
-                                <td>0.0g</td>
-                            </tr>
-                            <tr>
-                                <td>Dietary Fiber</td>
-                                <td>1.8g</td>
-                                <td>1.6g</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nutrients</th>
+                                    <th>Dried Dates (25g)</th>
+                                    <th>Fresh Dates (25g)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Calories</td>
+                                    <td>70 kcal</td>
+                                    <td>66 kcal</td>
+                                </tr>
+                                <tr>
+                                    <td>Proteins</td>
+                                    <td>0.5g</td>
+                                    <td>0.4g</td>
+                                </tr>
+                                <tr>
+                                    <td>Carbohydrates</td>
+                                    <td>16.2g</td>
+                                    <td>18.0g</td>
+                                </tr>
+                                <tr>
+                                    <td>Lipids</td>
+                                    <td>0.05g</td>
+                                    <td>0.0g</td>
+                                </tr>
+                                <tr>
+                                    <td>Dietary Fiber</td>
+                                    <td>1.8g</td>
+                                    <td>1.6g</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             
@@ -1578,7 +1876,7 @@
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="src/1.jpg" alt="Deglet Nour Dates">
+                        <img src="src/1.jpg" alt="Deglet Nour Dates" loading="lazy">
                     </div>
                     <div class="product-info">
                         <h3>Deglet Nour</h3>
@@ -1595,7 +1893,7 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="src/4.jpg" alt="Dagla Dates">
+                        <img src="src/4.jpg" alt="Dagla Dates" loading="lazy">
                     </div>
                     <div class="product-info">
                         <h3>Dagla</h3>
@@ -1612,7 +1910,7 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="src/5.jpg" alt="Halawy Dates">
+                        <img src="src/5.jpg" alt="Halawy Dates" loading="lazy">
                     </div>
                     <div class="product-info">
                         <h3>Dagla</h3>
@@ -1629,7 +1927,7 @@
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="src/9.jpg" alt="Barhi Dates">
+                        <img src="src/9.jpg" alt="Barhi Dates" loading="lazy">
                     </div>
                     <div class="product-info">
                         <h3>Degla </h3>
@@ -1729,25 +2027,43 @@
         </div>
     </section>
 
-    <!-- QR Code Section -->
+    <!-- QR Code Section - UPDATED WITH QR IMAGE -->
     <section class="qr-section" id="qr">
         <div class="container">
-            <h2>Quick Access QR</h2>
-            <p>Share this QR code with sellers in Algiers for instant access to our catalog</p>
+            <h2>Quick Access QR Code</h2>
+            <p>Scan this QR code to instantly access our complete date catalog, pricing, and contact information</p>
             
             <div class="qr-container">
-                <div class="qr-code">
-                    <!-- Gold-themed QR Code -->
-                    <div style="width: 160px; height: 160px; background: #000; padding: 10px; position: relative; border-radius: 4px;">
-                        <div style="position: absolute; top: 10px; left: 10px; width: 20px; height: 20px; background: var(--gold); border-radius: 3px;"></div>
-                        <div style="position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; background: var(--gold); border-radius: 3px;"></div>
-                        <div style="position: absolute; bottom: 10px; left: 10px; width: 20px; height: 20px; background: var(--gold); border-radius: 3px;"></div>
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--gold); font-weight: bold; font-size: 1.5rem; font-family: 'Playfair Display', serif;">GD</div>
+                <!-- QR Code Image -->
+                <div class="qr-code" id="qrCodeImage">
+                    <img src="src/qr.jpg" alt="GoldDates QR Code - Scan to visit our website" loading="lazy">
+                </div>
+                
+                <div class="qr-info">
+                    <h3>Scan with Your Smartphone</h3>
+                    <p>Use your phone's camera to scan this QR code. It will automatically direct you to our website where you can:</p>
+                    
+                    <div class="qr-features">
+                        <div class="qr-feature">
+                            <i class="fas fa-list-alt"></i>
+                            <span>View all date varieties</span>
+                        </div>
+                        <div class="qr-feature">
+                            <i class="fas fa-tags"></i>
+                            <span>Check current pricing</span>
+                        </div>
+                        <div class="qr-feature">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Contact us directly</span>
+                        </div>
+                        <div class="qr-feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Learn about delivery</span>
+                        </div>
                     </div>
                 </div>
-                <h3>Scan for Instant Access</h3>
-                <p>Point your smartphone camera at this code to instantly visit our website and view all date varieties, nutrition information, and contact details.</p>
-                <p class="qr-instruction">Perfect for business cards and market visits</p>
+                
+                <p class="qr-instruction">Perfect for sharing with business partners and market sellers in Algiers</p>
             </div>
         </div>
     </section>
@@ -1792,7 +2108,7 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/213778330663?text=Hello%20GoldDates%2C%20I%20am%20interested%20in%20your%20premium%20Biskra%20dates%20for%20Algiers%20market." target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/213778330663?text=Hello%20GoldDates%2C%20I%20am%20interested%20in%20your%20premium%20Biskra%20dates%20for%20Algiers%20market." target="_blank" class="whatsapp-float" aria-label="Contact on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1832,23 +2148,101 @@
             }
         });
         
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - FIXED VERSION
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+        let isMenuOpen = false;
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                mobileMenuOverlay.classList.add('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            } else {
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
         
         // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        function closeMobileMenu() {
+            isMenuOpen = false;
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+        
+        // Event listeners
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileMenuBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            toggleMobileMenu();
+        });
+        
+        // Close menu when clicking on links
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+            link.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                closeMobileMenu();
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }, 300);
+                    }
+                }
             });
+        });
+        
+        // Close menu when clicking outside
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Close menu with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMobileMenu();
+            }
+        });
+        
+        // QR Code Image Fallback
+        const qrCodeImage = document.getElementById('qrCodeImage');
+        const qrImg = qrCodeImage.querySelector('img');
+        
+        qrImg.addEventListener('error', function() {
+            console.log('QR code image failed to load, showing fallback');
+            qrCodeImage.classList.add('fallback');
+            
+            // Add a clickable link in fallback
+            const link = document.createElement('a');
+            link.href = 'https://wa.me/213778330663';
+            link.target = '_blank';
+            link.style.textDecoration = 'none';
+            link.style.color = 'var(--gold)';
+            link.style.fontWeight = 'bold';
+            link.innerHTML = 'Click to contact via WhatsApp';
+            
+            qrCodeImage.appendChild(link);
+        });
+        
+        // Make QR code clickable (optional - opens WhatsApp)
+        qrCodeImage.addEventListener('click', function() {
+            window.open('https://wa.me/213778330663?text=Hello%20GoldDates%2C%20I%20scanned%20your%20QR%20code%20and%20would%20like%20more%20information%20about%20your%20dates.', '_blank');
         });
         
         // Form Submission
@@ -1933,7 +2327,29 @@
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            // Skip for mobile menu links (handled separately)
+            if (anchor.classList.contains('mobile-menu-link')) return;
+            
             anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+            
+            // Add touch support for mobile
+            anchor.addEventListener('touchend', function(e) {
+                // Skip for mobile menu links (handled separately)
+                if (this.classList.contains('mobile-menu-link')) return;
+                
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
@@ -1959,6 +2375,18 @@
                 if (!card.classList.contains('animate')) return;
                 card.style.transform = 'translateY(0)';
             });
+            
+            // Touch events for mobile
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'translateY(-15px)';
+            });
+            
+            card.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    if (!card.classList.contains('animate')) return;
+                    card.style.transform = 'translateY(0)';
+                }, 300);
+            });
         });
         
         highlightCards.forEach(card => {
@@ -1969,6 +2397,17 @@
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0)';
             });
+            
+            // Touch events for mobile
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    card.style.transform = 'translateY(0)';
+                }, 300);
+            });
         });
         
         galleryItems.forEach(item => {
@@ -1978,6 +2417,17 @@
             
             item.addEventListener('mouseleave', () => {
                 item.style.transform = 'translateY(0)';
+            });
+            
+            // Touch events for mobile
+            item.addEventListener('touchstart', () => {
+                item.style.transform = 'translateY(-10px)';
+            });
+            
+            item.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    item.style.transform = 'translateY(0)';
+                }, 300);
             });
         });
         
@@ -1991,19 +2441,82 @@
             button.addEventListener('mouseleave', () => {
                 button.style.transform = 'translateY(0)';
             });
+            
+            // Touch events for mobile
+            button.addEventListener('touchstart', () => {
+                button.style.transform = 'translateY(-3px)';
+            });
+            
+            button.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    button.style.transform = 'translateY(0)';
+                }, 300);
+            });
         });
         
         // Add gold shimmer effect to QR code on hover
-        const qrCode = document.querySelector('.qr-code');
-        qrCode.addEventListener('mouseenter', () => {
-            qrCode.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
-        });
+        if (qrCodeImage) {
+            qrCodeImage.addEventListener('mouseenter', () => {
+                qrCodeImage.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
+                qrCodeImage.style.transform = 'scale(1.05)';
+            });
+            
+            qrCodeImage.addEventListener('mouseleave', () => {
+                qrCodeImage.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.3)';
+                qrCodeImage.style.transform = 'scale(1)';
+            });
+            
+            // Touch events for mobile
+            qrCodeImage.addEventListener('touchstart', () => {
+                qrCodeImage.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
+                qrCodeImage.style.transform = 'scale(1.05)';
+            });
+            
+            qrCodeImage.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    qrCodeImage.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.3)';
+                    qrCodeImage.style.transform = 'scale(1)';
+                }, 300);
+            });
+        }
         
-        qrCode.addEventListener('mouseleave', () => {
-            qrCode.style.boxShadow = 'none';
-        });
+        // Fix for iOS Safari 100vh issue
+        function setVhUnits() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
         
-        // Add image fallback in case some images don't load
+        // Initial call
+        setVhUnits();
+        
+        // Update on resize and orientation change
+        window.addEventListener('resize', setVhUnits);
+        window.addEventListener('orientationchange', setVhUnits);
+        
+        // Fix for mobile keyboard opening (prevent layout shift)
+        let viewport = document.querySelector("meta[name=viewport]");
+        function updateViewport() {
+            if (window.visualViewport && window.visualViewport.width) {
+                viewport.setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no");
+            }
+        }
+        
+        window.addEventListener('resize', updateViewport);
+        window.addEventListener('orientationchange', updateViewport);
+        
+        // Prevent zoom on input focus in iOS
+        document.addEventListener('touchstart', function(event) {
+            if (event.target.type === 'text' || 
+                event.target.type === 'email' || 
+                event.target.type === 'tel' || 
+                event.target.type === 'number' ||
+                event.target.tagName === 'TEXTAREA' ||
+                event.target.tagName === 'SELECT') {
+                // No action needed - allow default behavior
+            }
+        }, { passive: true });
+        
+        // Image fallback handling
         const images = document.querySelectorAll('img');
         images.forEach(img => {
             img.addEventListener('error', function() {
@@ -2023,6 +2536,41 @@
                         parent.appendChild(textFallback);
                     }
                 }
+            });
+        });
+        
+        // Prevent pull-to-refresh on mobile
+        document.addEventListener('touchmove', function(e) {
+            if (window.scrollY === 0 && e.touches[0].clientY > 10) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Handle iOS bounce effect
+        document.body.addEventListener('touchstart', function(e) {
+            if (e.touches.length !== 1) return;
+            const touch = e.touches[0];
+            this.initialTouchY = touch.clientY;
+        });
+        
+        document.body.addEventListener('touchmove', function(e) {
+            if (e.touches.length !== 1) return;
+            const touch = e.touches[0];
+            const deltaY = touch.clientY - this.initialTouchY;
+            
+            // Prevent overscroll at the top
+            if (window.scrollY <= 0 && deltaY > 0) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Fix for Android Chrome form zoom
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
             });
         });
     </script>
