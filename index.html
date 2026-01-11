@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoldDates | Premium Biskra Dates for Algiers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --gold: #D4AF37; /* True gold color */
+            --gold-light: #F5E6A3;
+            --gold-dark: #B8860B;
+            --black: #0A0A0A;
+            --black-light: #1A1A1A;
+            --gray-dark: #2A2A2A;
+            --gray: #3A3A3A;
+            --white: #FFFFFF;
+            --whatsapp-green: #25D366;
+            --whatsapp-dark: #128C7E;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            --shadow-gold: 0 5px 20px rgba(212, 175, 55, 0.3);
+            --border-radius: 12px;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #E5E5E5;
+            background-color: var(--black);
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: #CCCCCC;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            color: var(--gold);
+            padding: 1.2rem 2.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--gold);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--black);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            border: 2px solid var(--whatsapp-green);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 1.2rem 2.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-whatsapp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--whatsapp-dark);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-whatsapp:hover::before {
+            width: 100%;
+        }
+
+        .btn-whatsapp:hover {
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .loading-bar {
+            width: 400px;
+            height: 3px;
+            background-color: rgba(212, 175, 55, 0.2);
+            border-radius: 1px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            width: 0%;
+            border-radius: 1px;
+            transition: width 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background-color: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 1.2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo-image {
+            height: 70px; /* Increased size for better visibility */
+            width: auto;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            object-fit: contain;
+        }
+
+        .logo:hover .logo-image {
+            transform: scale(1.05);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #E5E5E5;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        /* Hero Section - Fixed for full width */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.85) 100%),
+                url('src/7.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            display: inline;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--gold-light);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: #DDDDDD;
+            max-width: 800px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--black-light);
+            padding: 8rem 0;
+        }
+
+        .gallery .container {
+            max-width: 1400px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .gallery-header h2 {
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-size: 3.5rem;
+        }
+
+        .gallery-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--gold);
+        }
+
+        .gallery-header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 300px;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-gold);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem;
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--black);
+            position: relative;
+            padding: 8rem 0;
+        }
+
+        .about .container {
+            max-width: 1400px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--white);
+            margin-bottom: 2rem;
+            font-size: 3.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Nutrition Section */
+        .nutrition {
+            background-color: var(--black-light);
+            padding: 8rem 0;
+        }
+
+        .nutrition .container {
+            max-width: 1400px;
+        }
+
+        .nutrition-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .nutrition-header h2 {
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-size: 3.5rem;
+        }
+
+        .nutrition-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--gold);
+        }
+
+        .nutrition-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .nutrition-text h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .nutrition-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .nutrition-table {
+            background-color: var(--black);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: var(--shadow);
+        }
+
+        .nutrition-table h3 {
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #CCCCCC;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .nutrition-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .highlight-card {
+            background-color: var(--black);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-card h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .highlight-card p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: var(--black);
+            padding: 8rem 0;
+        }
+
+        .products .container {
+            max-width: 1400px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-size: 3.5rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--gold);
+        }
+
+        .section-header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: var(--black-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .product-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-info h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+            color: #B0B0B0;
+            font-size: 1.1rem;
+        }
+
+        .product-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--black-light);
+            padding: 8rem 0;
+        }
+
+        .contact .container {
+            max-width: 1400px;
+        }
+
+        .contact h2 {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            color: #CCCCCC;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-form {
+            background-color: var(--black);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .contact-form h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1.2rem;
+            background-color: var(--black-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--whatsapp-dark);
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* QR Code Section */
+        .qr-section {
+            background-color: var(--black);
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .qr-section .container {
+            max-width: 1400px;
+        }
+
+        .qr-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .qr-section p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .qr-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--black-light);
+            padding: 4rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 2.5rem;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 4px solid var(--gold);
+        }
+
+        .qr-code::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
+            background-size: 200% 200%;
+            animation: shine 3s infinite;
+        }
+
+        .qr-instruction {
+            font-style: italic;
+            color: #B0B0B0;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black-light);
+            padding: 5rem 0 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        footer .container {
+            max-width: 1400px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo p {
+            color: #B0B0B0;
+            max-width: 400px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            color: var(--white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #B0B0B0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 0.5rem;
+        }
+
+        .footer-contact p {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #B0B0B0;
+            font-size: 1.1rem;
+        }
+
+        .footer-contact i {
+            color: var(--gold);
+            width: 24px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #666666;
+            font-size: 1rem;
+        }
+
+        /* Animations */
+        @keyframes shine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 4rem;
+            }
+            
+            h2 {
+                font-size: 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .container, .header-container, .hero-content {
+                padding: 0 2rem;
+            }
+            
+            .nutrition-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            
+            .about-image {
+                order: -1;
+                height: 400px;
+            }
+            
+            .about-text h2, .contact h2, .qr-section h2, .section-header h2, .nutrition-header h2, .gallery-header h2 {
+                font-size: 3rem;
+            }
+            
+            .logo-image {
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .container, .header-container, .hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            section {
+                padding: 6rem 0;
+            }
+            
+            .hero {
+                min-height: 90vh;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: var(--black-light);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+                border-top: 1px solid rgba(212, 175, 55, 0.1);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .hero-btns, .contact-buttons {
+                flex-direction: column;
+            }
+            
+            .btn, .btn-whatsapp {
+                width: 100%;
+                text-align: center;
+                max-width: 300px;
+            }
+            
+            .brand-logo {
+                font-size: 3rem;
+            }
+            
+            .loading-bar {
+                width: 300px;
+            }
+            
+            .products-grid, .nutrition-highlights, .gallery-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .about, .products, .contact, .qr-section, .nutrition, .gallery {
+                padding: 6rem 0;
+            }
+            
+            .nutrition-table {
+                padding: 1.5rem;
+            }
+            
+            th, td {
+                padding: 0.8rem;
+            }
+            
+            .gallery-item {
+                height: 250px;
+            }
+            
+            .logo-image {
+                height: 50px;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .container, .header-container, .hero-content {
+                padding: 0 1rem;
+            }
+            
+            .brand-logo {
+                font-size: 2.5rem;
+            }
+            
+            .loading-bar {
+                width: 250px;
+            }
+            
+            .contact-form, .nutrition-table {
+                padding: 2rem;
+            }
+            
+            .qr-container {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .qr-code {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .logo-image {
+                height: 45px;
+            }
+            
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="brand-logo">GoldDates</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="header-container">
+            <a href="#home" class="logo">
+                <img src="src/logo.jpg" alt="GoldDates Logo" class="logo-image">
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#nutrition">Nutrition</a></li>
+                <li><a href="#products">Varieties</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#qr">QR Code</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section - Full width fixed -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>Premium <span>Biskra Dates</span> for Algiers Markets</h1>
+            <h2>Direct from the Date Capital of Algeria</h2>
+            <p>Experience the unmatched quality, taste, and freshness of authentic Biskra dates, delivered directly from source to market. The gold standard in dates for discerning sellers in Algiers.</p>
+            
+            <div class="hero-btns">
+                <a href="#gallery" class="btn btn-primary">View Gallery</a>
+                <a href="#products" class="btn">Explore Varieties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <h2>Premium Date Gallery</h2>
+                <p>Discover the beauty and quality of our Biskra dates through this exclusive collection</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Image 1 -->
+                <div class="gallery-item">
+                    <img src="src/1.jpg" alt="Premium Biskra Dates 1">
+                    <div class="gallery-overlay">
+                        <h3>Fresh Harvest</h3>
+                        <p>Freshly harvested Biskra dates</p>
+                    </div>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="gallery-item">
+                    <img src="src/2.jpg" alt="Premium Biskra Dates 2">
+                    <div class="gallery-overlay">
+                        <h3>Golden Quality</h3>
+                        <p>The golden standard in dates</p>
+                    </div>
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="gallery-item">
+                    <img src="src/3.jpg" alt="Premium Biskra Dates 3">
+                    <div class="gallery-overlay">
+                        <h3>Date Palms</h3>
+                        <p>Biskra date palms in oasis</p>
+                    </div>
+                </div>
+                
+                <!-- Image 4 -->
+                <div class="gallery-item">
+                    <img src="src/4.jpg" alt="Premium Biskra Dates 4">
+                    <div class="gallery-overlay">
+                        <h3>Premium Selection</h3>
+                        <p>Hand-selected premium dates</p>
+                    </div>
+                </div>
+                
+                <!-- Image 5 -->
+                <div class="gallery-item">
+                    <img src="src/5.jpg" alt="Premium Biskra Dates 5">
+                    <div class="gallery-overlay">
+                        <h3>Natural Goodness</h3>
+                        <p>Pure, natural date goodness</p>
+                    </div>
+                </div>
+                
+                <!-- Image 6 -->
+                <div class="gallery-item">
+                    <img src="src/6.jpg" alt="Premium Biskra Dates 6">
+                    <div class="gallery-overlay">
+                        <h3>Quality Packaging</h3>
+                        <p>Premium packaging for quality</p>
+                    </div>
+                </div>
+                
+                <!-- Image 7 is used as background in hero section -->
+                
+                <!-- Image 8 -->
+                <div class="gallery-item">
+                    <img src="src/8.jpg" alt="Premium Biskra Dates 8">
+                    <div class="gallery-overlay">
+                        <h3>Traditional Methods</h3>
+                        <p>Traditional date cultivation</p>
+                    </div>
+                </div>
+                
+                <!-- Image 9 -->
+                <div class="gallery-item">
+                    <img src="src/9.jpg" alt="Premium Biskra Dates 9">
+                    <div class="gallery-overlay">
+                        <h3>Market Ready</h3>
+                        <p>Premium dates ready for market</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>The Gold Standard in Dates</h2>
+                    <p>Biskra, renowned as the "City of Dates," produces Algeria's finest dates thanks to its unique Sahara Desert oasis climate and generations of farming expertise.</p>
+                    <p>As a native of Biskra now operating in Algiers, we bridge the gap between source and market, ensuring you receive the freshest, highest quality dates without intermediaries.</p>
+                    <p>Each date variety is carefully selected, sorted, and packaged to maintain its natural goodness and extend shelf life while preserving the authentic taste that defines Biskra dates.</p>
+                    <a href="#contact" class="btn">Connect with Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="src/3.jpg" alt="Biskra Date Palms">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nutrition Section -->
+    <section class="nutrition" id="nutrition">
+        <div class="container">
+            <div class="nutrition-header">
+                <h2>Nutritional Excellence</h2>
+                <p>Discover why Biskra dates are not just delicious, but also a powerhouse of nutrition</p>
+            </div>
+            
+            <div class="nutrition-content">
+                <div class="nutrition-text">
+                    <h3>The Power of Dates</h3>
+                    <p>Dates are a fleshy fruit extremely popular in the Middle East, where they are considered a staple ingredient and part of daily diet. In Algeria, we love consuming dates, fresh or dried, as a snack or integrated into recipes to add even more deliciousness.</p>
+                    
+                    <h3>Key Characteristics</h3>
+                    <p>Dates are an excellent source of dietary fiber, rich in carbohydrates, with antioxidant power. They provide energy quickly and promote digestive well-being.</p>
+                    
+                    <h3>Health Benefits</h3>
+                    <p>Fresh or dried, dates are a good source of dietary fiber. Their high carbohydrate content makes them fruits with high energy content, perfect for intense sports activities. Moreover, they contain a high concentration of antioxidants.</p>
+                </div>
+                
+                <div class="nutrition-table">
+                    <h3>Nutritional Values</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nutrients</th>
+                                <th>Dried Dates (25g)</th>
+                                <th>Fresh Dates (25g)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Calories</td>
+                                <td>70 kcal</td>
+                                <td>66 kcal</td>
+                            </tr>
+                            <tr>
+                                <td>Proteins</td>
+                                <td>0.5g</td>
+                                <td>0.4g</td>
+                            </tr>
+                            <tr>
+                                <td>Carbohydrates</td>
+                                <td>16.2g</td>
+                                <td>18.0g</td>
+                            </tr>
+                            <tr>
+                                <td>Lipids</td>
+                                <td>0.05g</td>
+                                <td>0.0g</td>
+                            </tr>
+                            <tr>
+                                <td>Dietary Fiber</td>
+                                <td>1.8g</td>
+                                <td>1.6g</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="nutrition-highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h4>Cardiovascular Health</h4>
+                    <p>Dates help reduce cholesterol levels and contribute to decreasing the risk of cardiovascular diseases.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h4>Perfect for Athletes</h4>
+                    <p>Rich in carbohydrates, dates are an ideal food to facilitate muscle work during prolonged efforts.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Antioxidant Power</h4>
+                    <p>Fresh dates contain a high concentration of antioxidants that protect body cells.</p>
+                </div>
+                
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h4>Digestive Health</h4>
+                    <p>Composed of insoluble and soluble fiber, dates play an important role in intestinal regularity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Selection</h2>
+                <p>Discover the exclusive varieties of Biskra dates available for Algiers markets</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="src/1.jpg" alt="Deglet Nour Dates">
+                    </div>
+                    <div class="product-info">
+                        <h3>Deglet Nour</h3>
+                        <ul class="product-features">
+                            <li>Premium golden variety</li>
+                            <li>Soft, honey-like texture</li>
+                            <li>Rich in natural sweetness</li>
+                            <li>Highest quality export grade</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Availability</a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="src/4.jpg" alt="Dagla Dates">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dagla</h3>
+                        <ul class="product-features">
+                            <li>Large, fleshy texture</li>
+                            <li>Rich caramel flavor profile</li>
+                            <li>Perfect for gourmet use</li>
+                            <li>Consistently premium size</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Availability</a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="src/5.jpg" alt="Halawy Dates">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dagla</h3>
+                        <ul class="product-features">
+                            <li>Sweet, soft golden texture</li>
+                            <li>Perfect balance of flavor</li>
+                            <li>Excellent culinary variety</li>
+                            <li>Extended shelf life</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Availability</a>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="src/9.jpg" alt="Barhi Dates">
+                    </div>
+                    <div class="product-info">
+                        <h3>Degla </h3>
+                        <ul class="product-features">
+                            <li>Unique butterscotch flavor</li>
+                            <li>Firm, satisfying texture</li>
+                            <li>Best enjoyed fresh</li>
+                            <li>Rich in antioxidants</li>
+                        </ul>
+                        <a href="#contact" class="btn">Inquire Availability</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Locations</h3>
+                            <p>Direct Source: Biskra</p>
+                            <p>Distribution: Algiers</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Contact Numbers</h3>
+                            <p>+213 778 33 06 63 (Primary)</p>
+                            <p>+213 549 76 59 03 (Secondary)</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/213778330663?text=Hello%20GoldDates%2C%20I%20am%20interested%20in%20your%20premium%20Biskra%20dates%20for%20Algiers%20market." target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp +213 778 33 06 63
+                        </a>
+                        <a href="tel:+213778330663" class="btn">
+                            <i class="fas fa-phone"></i> Call Primary Number
+                        </a>
+                        <a href="tel:+213549765903" class="btn">
+                            <i class="fas fa-phone"></i> Call Secondary Number
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Request Information</h3>
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Your phone number" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="business">Business (Optional)</label>
+                            <input type="text" id="business" class="form-control" placeholder="Your business name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product">Product Interest</label>
+                            <select id="product" class="form-control" required>
+                                <option value="">Select a variety</option>
+                                <option value="deglet-nour">Deglet Nour</option>
+                                <option value="medjool">Medjool</option>
+                                <option value="halawy">Halawy</option>
+                                <option value="barhi">Barhi</option>
+                                <option value="mixed">Mixed Selection</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Your inquiry or requirements"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Section -->
+    <section class="qr-section" id="qr">
+        <div class="container">
+            <h2>Quick Access QR</h2>
+            <p>Share this QR code with sellers in Algiers for instant access to our catalog</p>
+            
+            <div class="qr-container">
+                <div class="qr-code">
+                    <!-- Gold-themed QR Code -->
+                    <div style="width: 160px; height: 160px; background: #000; padding: 10px; position: relative; border-radius: 4px;">
+                        <div style="position: absolute; top: 10px; left: 10px; width: 20px; height: 20px; background: var(--gold); border-radius: 3px;"></div>
+                        <div style="position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; background: var(--gold); border-radius: 3px;"></div>
+                        <div style="position: absolute; bottom: 10px; left: 10px; width: 20px; height: 20px; background: var(--gold); border-radius: 3px;"></div>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--gold); font-weight: bold; font-size: 1.5rem; font-family: 'Playfair Display', serif;">GD</div>
+                    </div>
+                </div>
+                <h3>Scan for Instant Access</h3>
+                <p>Point your smartphone camera at this code to instantly visit our website and view all date varieties, nutrition information, and contact details.</p>
+                <p class="qr-instruction">Perfect for business cards and market visits</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <img src="src/logo.jpg" alt="GoldDates Logo" class="logo-image" style="height: 70px;">
+                    </div>
+                    <p>Bringing the premium quality and nutritional excellence of Biskra dates directly to Algiers markets.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#nutrition">Nutrition</a></li>
+                        <li><a href="#products">Our Varieties</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#qr">QR Code</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Biskra & Algiers, Algeria</p>
+                    <p><i class="fas fa-phone"></i> +213 778 33 06 63 (Primary)</p>
+                    <p><i class="fas fa-phone"></i> +213 549 76 59 03 (Secondary)</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: +213 778 33 06 63</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 GoldDates. All rights reserved. | Premium Biskra Dates for Algiers Markets</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/213778330663?text=Hello%20GoldDates%2C%20I%20am%20interested%20in%20your%20premium%20Biskra%20dates%20for%20Algiers%20market." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Loading Screen with 5-second timer
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingProgress = document.getElementById('loadingProgress');
+        
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 20;
+            if (progress > 100) progress = 100;
+            loadingProgress.style.width = progress + '%';
+            
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                
+                // Hide loading screen after total 5 seconds
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                    
+                    // Animate header
+                    setTimeout(() => {
+                        document.getElementById('mainHeader').classList.add('scrolled');
+                    }, 100);
+                }, 500);
+            }
+        }, 150);
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Form Submission
+        const orderForm = document.getElementById('orderForm');
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const product = document.getElementById('product').value;
+            
+            // Show confirmation
+            alert(`Thank you ${name}! Your inquiry about ${product} dates has been received. We will contact you at ${phone} within 24 hours.`);
+            
+            // Reset form
+            orderForm.reset();
+        });
+        
+        // Animate product cards on scroll
+        const productCards = document.querySelectorAll('.product-card');
+        const highlightCards = document.querySelectorAll('.highlight-card');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        function animateOnScroll() {
+            productCards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    setTimeout(() => {
+                        card.classList.add('animate');
+                    }, index * 150);
+                }
+            });
+            
+            highlightCards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+            
+            galleryItems.forEach((item, index) => {
+                const itemTop = item.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (itemTop < windowHeight - 100) {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }
+        
+        // Set initial state for cards
+        highlightCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        galleryItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        // Initial check
+        setTimeout(() => {
+            animateOnScroll();
+        }, 800);
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add hover effect to cards
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                if (!card.classList.contains('animate')) return;
+                card.style.transform = 'translateY(0)';
+            });
+        });
+        
+        highlightCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-10px)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Add subtle animation to buttons on hover
+        const buttons = document.querySelectorAll('.btn, .btn-whatsapp');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-3px)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Add gold shimmer effect to QR code on hover
+        const qrCode = document.querySelector('.qr-code');
+        qrCode.addEventListener('mouseenter', () => {
+            qrCode.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.5)';
+        });
+        
+        qrCode.addEventListener('mouseleave', () => {
+            qrCode.style.boxShadow = 'none';
+        });
+        
+        // Add image fallback in case some images don't load
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('error', function() {
+                console.log(`Image failed to load: ${this.src}`);
+                // Fallback for logo
+                if (this.src.includes('logo.jpg')) {
+                    const parent = this.parentElement;
+                    if (parent.classList.contains('logo')) {
+                        // Create text fallback for logo
+                        const textFallback = document.createElement('div');
+                        textFallback.className = 'logo-text';
+                        textFallback.innerHTML = 'Gold<span>Dates</span>';
+                        textFallback.style.fontSize = '1.8rem';
+                        textFallback.style.fontWeight = '600';
+                        textFallback.style.color = 'var(--white)';
+                        textFallback.style.fontFamily = "'Playfair Display', serif";
+                        parent.appendChild(textFallback);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
