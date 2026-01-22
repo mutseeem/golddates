@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>GoldDates | Premium Biskra Dates for Algiers</title>
@@ -36,24 +36,17 @@
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
         }
 
         *:focus {
             outline: none;
         }
 
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
-
+        /* FIXED SCROLLING CSS */
         html {
             scroll-behavior: smooth;
+            height: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -64,6 +57,12 @@
             font-size: 16px;
             padding-top: var(--safe-area-inset-top);
             padding-bottom: var(--safe-area-inset-bottom);
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+            /* Modern way to prevent bounce without breaking scroll */
+            overscroll-behavior-y: none; 
+            -webkit-text-size-adjust: 100%;
         }
 
         h1, h2, h3, h4 {
@@ -1583,11 +1582,6 @@
             }
         }
 
-        /* Prevent pull-to-refresh on mobile */
-        body {
-            overscroll-behavior-y: none;
-        }
-
         /* Better touch targets for mobile */
         button, 
         .btn, 
@@ -1600,7 +1594,6 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="brand-logo">GoldDates</div>
         <div class="loading-bar">
@@ -1608,7 +1601,6 @@
         </div>
     </div>
 
-    <!-- Header -->
     <header id="mainHeader">
         <div class="header-container">
             <a href="#home" class="logo">
@@ -1631,7 +1623,6 @@
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay">
         <div class="mobile-menu-container">
             <ul class="mobile-nav-links">
@@ -1646,7 +1637,6 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-background"></div>
         <div class="hero-content">
@@ -1661,7 +1651,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="gallery" id="gallery">
         <div class="container">
             <div class="gallery-header">
@@ -1670,7 +1659,6 @@
             </div>
             
             <div class="gallery-grid">
-                <!-- Image 1 -->
                 <div class="gallery-item">
                     <img src="src/1.jpg" alt="Premium Biskra Dates 1" loading="lazy">
                     <div class="gallery-overlay">
@@ -1679,7 +1667,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 2 -->
                 <div class="gallery-item">
                     <img src="src/2.jpg" alt="Premium Biskra Dates 2" loading="lazy">
                     <div class="gallery-overlay">
@@ -1688,7 +1675,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 3 -->
                 <div class="gallery-item">
                     <img src="src/3.jpg" alt="Premium Biskra Dates 3" loading="lazy">
                     <div class="gallery-overlay">
@@ -1697,7 +1683,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 4 -->
                 <div class="gallery-item">
                     <img src="src/4.jpg" alt="Premium Biskra Dates 4" loading="lazy">
                     <div class="gallery-overlay">
@@ -1706,7 +1691,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 5 -->
                 <div class="gallery-item">
                     <img src="src/5.jpg" alt="Premium Biskra Dates 5" loading="lazy">
                     <div class="gallery-overlay">
@@ -1715,7 +1699,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 6 -->
                 <div class="gallery-item">
                     <img src="src/6.jpg" alt="Premium Biskra Dates 6" loading="lazy">
                     <div class="gallery-overlay">
@@ -1724,9 +1707,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 7 is used as background in hero section -->
-                
-                <!-- Image 8 -->
                 <div class="gallery-item">
                     <img src="src/8.jpg" alt="Premium Biskra Dates 8" loading="lazy">
                     <div class="gallery-overlay">
@@ -1735,7 +1715,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 9 -->
                 <div class="gallery-item">
                     <img src="src/9.jpg" alt="Premium Biskra Dates 9" loading="lazy">
                     <div class="gallery-overlay">
@@ -1747,7 +1726,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-content">
@@ -1765,7 +1743,6 @@
         </div>
     </section>
 
-    <!-- Nutrition Section -->
     <section class="nutrition" id="nutrition">
         <div class="container">
             <div class="nutrition-header">
@@ -1864,7 +1841,6 @@
         </div>
     </section>
 
-    <!-- Products Section -->
     <section class="products" id="products">
         <div class="container">
             <div class="section-header">
@@ -1873,7 +1849,6 @@
             </div>
             
             <div class="products-grid">
-                <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="src/1.jpg" alt="Deglet Nour Dates" loading="lazy">
@@ -1890,7 +1865,6 @@
                     </div>
                 </div>
                 
-                <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="src/4.jpg" alt="Dagla Dates" loading="lazy">
@@ -1907,7 +1881,6 @@
                     </div>
                 </div>
                 
-                <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="src/5.jpg" alt="Halawy Dates" loading="lazy">
@@ -1924,7 +1897,6 @@
                     </div>
                 </div>
                 
-                <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="src/9.jpg" alt="Barhi Dates" loading="lazy">
@@ -1944,7 +1916,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <h2>Get in Touch</h2>
@@ -2027,14 +1998,12 @@
         </div>
     </section>
 
-    <!-- QR Code Section - UPDATED WITH QR IMAGE -->
     <section class="qr-section" id="qr">
         <div class="container">
             <h2>Quick Access QR Code</h2>
             <p>Scan this QR code to instantly access our complete date catalog, pricing, and contact information</p>
             
             <div class="qr-container">
-                <!-- QR Code Image -->
                 <div class="qr-code" id="qrCodeImage">
                     <img src="src/qr.jpg" alt="GoldDates QR Code - Scan to visit our website" loading="lazy">
                 </div>
@@ -2068,7 +2037,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -2107,7 +2075,6 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/213778330663?text=Hello%20GoldDates%2C%20I%20am%20interested%20in%20your%20premium%20Biskra%20dates%20for%20Algiers%20market." target="_blank" class="whatsapp-float" aria-label="Contact on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -2497,7 +2464,7 @@
         let viewport = document.querySelector("meta[name=viewport]");
         function updateViewport() {
             if (window.visualViewport && window.visualViewport.width) {
-                viewport.setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no");
+                viewport.setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=5.0");
             }
         }
         
@@ -2538,31 +2505,6 @@
                 }
             });
         });
-        
-        // Prevent pull-to-refresh on mobile
-        document.addEventListener('touchmove', function(e) {
-            if (window.scrollY === 0 && e.touches[0].clientY > 10) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-        
-        // Handle iOS bounce effect
-        document.body.addEventListener('touchstart', function(e) {
-            if (e.touches.length !== 1) return;
-            const touch = e.touches[0];
-            this.initialTouchY = touch.clientY;
-        });
-        
-        document.body.addEventListener('touchmove', function(e) {
-            if (e.touches.length !== 1) return;
-            const touch = e.touches[0];
-            const deltaY = touch.clientY - this.initialTouchY;
-            
-            // Prevent overscroll at the top
-            if (window.scrollY <= 0 && deltaY > 0) {
-                e.preventDefault();
-            }
-        }, { passive: false });
         
         // Fix for Android Chrome form zoom
         const inputs = document.querySelectorAll('input, select, textarea');
